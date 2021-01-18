@@ -9,14 +9,14 @@ const CoinSchema = new Schema({
   name: String,
   description: String,
   price: Number,
-  images: [{
+  thumb: {
     filename: String,
-    imageType: {
-      type: String,
-      enum: ['thumb', 'main']
-    },
     url: String
-  }]
+  },
+  main: {
+    filename: String,
+    url: String
+  }
 })
 
 
