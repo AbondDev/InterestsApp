@@ -1,6 +1,6 @@
 //Todo: add in api dependencies
 //Todo: implement these controllers
-module.exports.findData = async (req,res) => {
+module.exports.fetch = async (req,res) => {
   throw new Error('Not implemented')
 }
 
