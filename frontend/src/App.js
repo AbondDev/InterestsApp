@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import CreateCoin from "./components/create-coin.component";
 import ShowCoin from "./components/show-coin.component";
-import CoinList from "./components/coin-list.component";
+import CoinList from "./components/coins-list.component";
 
 import logo from "./logo.svg";
 
