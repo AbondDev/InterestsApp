@@ -18,15 +18,15 @@ mongoose.connect(dbUrl, {
   useFindAndModify: false
 });
 
+server.use(cors())
+server.use(express.json())
+server.use(express.urlencoded({extended: true}))
 const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, "connection error: "));
 db.once('open', () => {
   console.log('Database Connected')
 });
-
-server.use(cors())
-server.use(express.json())
-server.use(express.urlencoded({extended: true}))
 
 server.use('/coins',coinRoutes)
 server.use('*', (req,res) => {
