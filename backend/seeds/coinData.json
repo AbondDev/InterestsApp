@@ -1,0 +1,103 @@
+{
+  "coins": [{
+      "item": {
+        "id": "reserve-rights-token",
+        "name": "Reserve Rights Token",
+        "symbol": "RSR",
+        "market_cap_rank": 62,
+        "thumb": "https://assets.coingecko.com/coins/images/8365/thumb/Reserve_Rights.png?1557737411",
+        "large": "https://assets.coingecko.com/coins/images/8365/large/Reserve_Rights.png?1557737411",
+        "score": 0
+      }
+    },
+    {
+      "item": {
+        "id": "xdai-stake",
+        "name": "xDAI Stake",
+        "symbol": "STAKE",
+        "market_cap_rank": 245,
+        "thumb": "https://assets.coingecko.com/coins/images/11061/thumb/xdai.png?1587714165",
+        "large": "https://assets.coingecko.com/coins/images/11061/large/xdai.png?1587714165",
+        "score": 1
+      }
+    },
+    {
+      "item": {
+        "id": "havven",
+        "name": "Synthetix Network Token",
+        "symbol": "SNX",
+        "market_cap_rank": 24,
+        "thumb": "https://assets.coingecko.com/coins/images/3406/thumb/SNX.png?1598631139",
+        "large": "https://assets.coingecko.com/coins/images/3406/large/SNX.png?1598631139",
+        "score": 2
+      }
+    },
+    {
+      "item": {
+        "id": "1inch",
+        "name": "1inch",
+        "symbol": "1INCH",
+        "market_cap_rank": 126,
+        "thumb": "https://assets.coingecko.com/coins/images/13469/thumb/1inch-token.png?1608803028",
+        "large": "https://assets.coingecko.com/coins/images/13469/large/1inch-token.png?1608803028",
+        "score": 3
+      }
+    },
+    {
+      "item": {
+        "id": "defi-yield-protocol",
+        "name": "DeFi Yield Protocol",
+        "symbol": "DYP",
+        "market_cap_rank": 665,
+        "thumb": "https://assets.coingecko.com/coins/images/13480/thumb/dyp_logo.png?1608971751",
+        "large": "https://assets.coingecko.com/coins/images/13480/large/dyp_logo.png?1608971751",
+        "score": 4
+      }
+    },
+    {
+      "item": {
+        "id": "api3",
+        "name": "API3",
+        "symbol": "API3",
+        "market_cap_rank": 179,
+        "thumb": "https://assets.coingecko.com/coins/images/13256/thumb/api3.jpg?1606751424",
+        "large": "https://assets.coingecko.com/coins/images/13256/large/api3.jpg?1606751424",
+        "score": 5
+      }
+    },
+    {
+      "item": {
+        "id": "loopring",
+        "name": "Loopring",
+        "symbol": "LRC",
+        "market_cap_rank": 48,
+        "thumb": "https://assets.coingecko.com/coins/images/913/thumb/LRC.png?1572852344",
+        "large": "https://assets.coingecko.com/coins/images/913/large/LRC.png?1572852344",
+        "score": 6
+      }
+    },
+    {
+      "item": {
+        "id": "bitcoin",
+        "symbol": "btc",
+        "name": "Bitcoin",
+        "market_cap_rank": 48,
+        "thumb": "",
+        "large": "",
+        "score": 7
+      }
+    },
+    {
+      "item": {
+        "id": "tether",
+        "symbol": "usdt",
+        "name": "Tether",
+        "market_cap_rank": 48,
+        "thumb": "",
+        "large": "",
+        "score": 7
+      }
+    }
+  ],
+  "exchanges": []
+}
