@@ -12,10 +12,11 @@ module.exports.list = async (req,res) => {
 }
 
 module.exports.add = async(req,res) => {
-  const {coinData} = req.body
-  const coin = new Coin(coinData)
-  await coin.save()
-  console.log(coin)
+  console.log(req.body)
+  // const {coinData} = req.body
+  // const coin = new Coin(coinData)
+  // await coin.save()
+  // console.log(coin)
 }
 
 module.exports.update = async(req,res) => {
