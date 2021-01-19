@@ -5,7 +5,7 @@ const Coin = require('../models/coin.model');
 
 module.exports.fetch = async (req,res) => {
   const {id} = req.params;
-  const coin = await Coin.findById(id).exec();
+  const coin = await Coin.findById(id).populate({path: 'facts'});
   if(coin){
     res.json(coin);
   }
@@ -16,7 +16,7 @@ module.exports.fetch = async (req,res) => {
 
 
 module.exports.list = async (req,res) => {
-  const coins = await Coin.find({})
+  const coins = await Coin.find({}).populate({path: 'facts'})
   res.json(coins)
 }
 
