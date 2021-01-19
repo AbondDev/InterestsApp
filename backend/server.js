@@ -10,6 +10,10 @@ const mongoose = require('mongoose')
 const coinRoutes = require('./routes/coin.route.js');
 const server = express();
 
+server.use(cors())
+server.use(express.json())
+server.use(express.urlencoded({extended: true}))
+
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/code-test'
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
@@ -18,9 +22,7 @@ mongoose.connect(dbUrl, {
   useFindAndModify: false
 });
 
-server.use(cors())
-server.use(express.json())
-server.use(express.urlencoded({extended: true}))
+
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, "connection error: "));
