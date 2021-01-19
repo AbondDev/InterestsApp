@@ -19,7 +19,7 @@ const Coin = props => (
         <h3>Factoids</h3>
         <ul>
         {props.coin.facts.map(function(currentFact, i){
-   return (<li key={i}>{currentFact}</li>)
+   return (<li key={i}>{currentFact.body} - {currentFact.author}</li>)
  })}
         </ul>
         </Card.Text>
