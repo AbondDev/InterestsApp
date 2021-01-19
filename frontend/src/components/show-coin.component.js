@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Col, Row} from "react-bootstrap"
 import axios from "axios";
+import CreateFact from "./create-fact.component"
+
 // todo: move coins and facts into class
 //Todo: center and format this view
 //todo: make sure the coin for this view makes sense in this context. Ie, the price image, and description should be in the same order as it is on the list view
@@ -19,7 +21,6 @@ const Fact = props => (
 export default class ShowCoin extends Component {
   constructor(props) {
     super(props);
-    this.factList = this.factList.bind(this)
     this.state = {coin: {name: '',
     price: '',
     description: '',
@@ -59,6 +60,7 @@ export default class ShowCoin extends Component {
             Factoids
           </h3>
           {this.factList()}
+          <CreateFact params={this.props.match.params} history={this.props.history}/>
         </Col>
         </Row>
       </div>

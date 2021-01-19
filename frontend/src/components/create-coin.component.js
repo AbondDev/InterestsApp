@@ -1,5 +1,6 @@
 // Todo: add in validations
 // Todo: change className usage to react components where possible
+// Todo: change the file button to react-bootstrap file
 import React, {
   Component
 } from 'react';
