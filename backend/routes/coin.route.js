@@ -10,7 +10,7 @@ const upload = multer({storage})
 
 router.route('/')
   .get(coins.list)
-  .post(coins.add)
+  .post(upload.array('image'),coins.add)
 
 router.route('/:id')
   .get(coins.fetch)

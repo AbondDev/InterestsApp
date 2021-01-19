@@ -12,10 +12,17 @@ module.exports.list = async (req,res) => {
 }
 
 module.exports.add = async(req,res) => {
-  const {coinData} = req.body
-  const coin = new Coin(coinData)
+  const {coinName, coinGeckoId, description, price} = req.body
+  const coin = new Coin()
+  coin.coinGeckoId = coinGeckoId
+  coin.name = coinName
+  coin.description = description
+  coin.price = price
+  coin.main.url = req.files[0].path
+  coin.main.filename = req.files[0].filename+'_main'
+  coin.thumb.url = req.files[0].path.replace('/upload','/upload/w_200')
+  coin.thumb.filename = req.files[0].filename+'_thumb'
   await coin.save()
-  console.log(coin)
 }
 
 module.exports.update = async(req,res) => {
