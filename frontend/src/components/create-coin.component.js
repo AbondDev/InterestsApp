@@ -1,4 +1,5 @@
 // Todo: add in validations
+// Todo: change className usage to react components where possible
 import React, {
   Component
 } from 'react';

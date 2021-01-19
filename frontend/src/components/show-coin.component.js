@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import axios from "axios";
 // todo: move this into class
+//Todo: center and format this view
 const Coin = props => (
   <div>
   <img src={props.coin.main_image} alt={props.coin.name}/>
-  <h3>{props.coin.name}</h3>
   <h4>{props.coin.price}</h4>
   <p>{props.coin.description}</p>
   </div>
@@ -33,7 +33,7 @@ export default class ShowCoin extends Component {
   render() {
     return (
       <div>
-        <h3>Coin Info</h3>
+        <h3>{this.state.coin.name} Info</h3>
         <Coin coin={this.state.coin}/>
       </div>
     )

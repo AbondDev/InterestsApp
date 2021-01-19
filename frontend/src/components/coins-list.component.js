@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios'
-// Move this into another class
+import axios from 'axios';
+import {Col,Card, Button} from 'react-bootstrap';
+// todo: Move this into another class
+// todo: remove thumbnail processing. It is not necessary for cards
+// todo: move styling to css
 const Coin = props => (
-  <div>
-  <img src={props.coin.thumb.url} alt={props.coin.name}/>
-  <h3>{props.coin.name}</h3>
-  <h4>{props.coin.price}</h4>
-  <p>{props.coin.description}</p>
-  <div>
-    <Link to={"/coin/"+props.coin._id}>
-      <button type = "button" className = "btn btn-primary">View  Coin</button>
-    </Link>
-  </div>
-  </div>
+<>
+  <Card>
+    <Card.Header className ="text-center">{props.coin.name}</Card.Header>
+    <Card.Img variant="top" src={props.coin.main.url} alt={props.coin.name} />
+    <Card.Body>
+      <Card.Text>
+        <ul style={{listStyleType:"none"}}>
+          <li><strong>Description:</strong> {props.coin.description}</li>
+          <li><strong>Price: </strong> {props.coin.price}</li>
+        </ul>
+        </Card.Text>
+        <Link to={"/coin/"+props.coin._id}>
+          <button type = "button" className = "btn btn-primary">View  Coin</button>
+        </Link>
+    </Card.Body>
+  </Card>
+</>
 )
 
 export default class CoinList extends Component {
@@ -39,7 +48,11 @@ export default class CoinList extends Component {
     return (
       <div>
         <h3>My Favorite Coins</h3>
-          {this.coinList()}
+
+          <Col xs="6">
+              {this.coinList()}
+          </Col>
+
       </div>
     )
   }
