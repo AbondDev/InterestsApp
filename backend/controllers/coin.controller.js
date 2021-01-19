@@ -1,10 +1,19 @@
 //Todo: add in api dependencies
 //Todo: implement these controllers
+//Todo: Add error handlers
 const Coin = require('../models/coin.model.js');
 
 module.exports.fetch = async (req,res) => {
-  throw new Error('Not implemented')
+  const {id} = req.params;
+  const coin = await Coin.findById(id).exec();
+  if(coin){
+    res.json(coin);
+  }
+  else{
+    throw new Error("Coin not found")
+  }
 }
+
 
 module.exports.list = async (req,res) => {
   const coins = await Coin.find({})
