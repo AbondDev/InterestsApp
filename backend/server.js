@@ -8,6 +8,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
 const coinRoutes = require('./routes/coin.route.js');
+const factRoutes = require('./routes/fact.route.js');
 const server = express();
 
 server.use(cors())
@@ -31,6 +32,7 @@ db.once('open', () => {
 });
 
 server.use('/coins',coinRoutes)
+server.use('/coins/:coinId/facts', factRoutes)
 server.use('*', (req,res) => {
   res.send(`Invalid url ${req.originalUrl}` )
 })

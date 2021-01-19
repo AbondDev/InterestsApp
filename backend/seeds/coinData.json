@@ -75,29 +75,6 @@
         "large": "https://assets.coingecko.com/coins/images/913/large/LRC.png?1572852344",
         "score": 6
       }
-    },
-    {
-      "item": {
-        "id": "bitcoin",
-        "symbol": "btc",
-        "name": "Bitcoin",
-        "market_cap_rank": 48,
-        "thumb": "",
-        "large": "",
-        "score": 7
-      }
-    },
-    {
-      "item": {
-        "id": "tether",
-        "symbol": "usdt",
-        "name": "Tether",
-        "market_cap_rank": 48,
-        "thumb": "",
-        "large": "",
-        "score": 7
-      }
     }
-  ],
-  "exchanges": []
+  ]
 }

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const path = require('path')
 const fs = require('fs')
-const Coin = require('../models/coin.model.js');
+const Coin = require('../models/coin.model');
+const Fact = require('../models/fact.model')
 
 mongoose.connect('mongodb://localhost:27017/code-test', {
   useNewUrlParser: true,
@@ -21,11 +22,14 @@ const seedDB = async () => {
   const parsedData = JSON.parse(rawdata);
   const coins = parsedData.coins
   for (let i = 0; i < coins.length - 2; i++) {
+    const price = Math.floor(Math.random() * 20) + 10
+    const fact = new Fact({body: "blah blah blah", author: "Mr.Blah"});
+    await fact.save();
     const coin = new Coin({
       coinGeckoId: coins[i].item.id,
       name: coins[i].item.name,
-      description: `Symbol: ${coins[i].item.symbol} Rank: ${coins[i].item.market_cap_rank}`,
-      price: Math.floor(Math.random() * 20) + 10,
+      description: `The shortened symbol for ${coins[i].item.name} is ${coins[i].item.symbol} `,
+      price: price,
       thumb: {
         filename: `code-test/${coins[i].item.symbol}_thumb`,
         url: coins[i].item.thumb
@@ -35,6 +39,7 @@ const seedDB = async () => {
         url: coins[i].item.large
       }
     })
+    coin.facts.push(fact);
     await coin.save();
   }
 }

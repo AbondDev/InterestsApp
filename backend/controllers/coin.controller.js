@@ -1,7 +1,7 @@
 //Todo: add in api dependencies
 //Todo: implement these controllers
 //Todo: Add error handlers
-const Coin = require('../models/coin.model.js');
+const Coin = require('../models/coin.model');
 
 module.exports.fetch = async (req,res) => {
   const {id} = req.params;

@@ -16,10 +16,17 @@ const Coin = props => (
           <li><strong>Description:</strong> {props.coin.description}</li>
           <li><strong>Price: </strong> {props.coin.price}</li>
         </ul>
+        <h3>Factoids</h3>
+        <ul>
+        {props.coin.facts.map(function(currentFact, i){
+   return (<li key={i}>{currentFact}</li>)
+ })}
+        </ul>
         </Card.Text>
         <Link to={"/coin/"+props.coin._id}>
           <button type = "button" className = "btn btn-primary">View  Coin</button>
         </Link>
+
     </Card.Body>
   </Card>
 </>
