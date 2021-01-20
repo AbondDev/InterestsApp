@@ -53,8 +53,6 @@ export default class CreateCoin extends Component {
 
   onSubmit(e) {
     e.preventDefault()
-    // Todo: Remove conosole.logs
-
       const formData = new FormData();
       formData.append("coinName", this.state.name)
       formData.append("coineckoId",this.state.coinGeckoId)

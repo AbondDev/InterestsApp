@@ -4,7 +4,6 @@ import axios from 'axios';
 import {Col, Row} from 'react-bootstrap';
 import TinderCard from 'react-tinder-card'
 import {Card} from "react-bootstrap";
-// todo: remove thumbnail processing. It is not necessary for cards
 
 export default class CoinList extends Component {
   constructor(props) {

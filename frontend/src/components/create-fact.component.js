@@ -31,7 +31,6 @@ export default class CreateFact extends Component {
       body: this.state.body,
       author: this.state.author
     }
-    // // todo: move this to .env(?) maybe
     axios.post(
       'http://localhost:8080/coins/'+this.props.params.id+'/facts',
       newFact,

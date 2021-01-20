@@ -5,8 +5,6 @@ import CreateFact from "./create-fact.component"
 import FactList from "./fact-list.component"
 
 // todo: move coins and facts into class
-//Todo: center and format this view
-//todo: make sure the coin for this view makes sense in this context. Ie, the price image, and description should be in the same order as it is on the list view
 const Coin = props => (
   <div>
   <img className="img-fluid" src={props.coin.main_image} alt={props.coin.name}/>

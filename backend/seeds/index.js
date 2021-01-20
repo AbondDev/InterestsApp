@@ -30,10 +30,6 @@ const seedDB = async () => {
       name: coins[i].item.name,
       description: `The shortened symbol for ${coins[i].item.name} is ${coins[i].item.symbol} `,
       price: price,
-      thumb: {
-        filename: `code-test/${coins[i].item.symbol}_thumb`,
-        url: coins[i].item.thumb
-      },
       main: {
         filename: `code-test/${coins[i].item.symbol}_main`,
         url: coins[i].item.main

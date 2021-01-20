@@ -1,5 +1,5 @@
-//Todo: implement these controllers
 //Todo: Add error handlers
+// Todo: implement update for fact
 const Fact = require('../models/fact.model');
 const Coin = require('../models/coin.model')
 module.exports.fetch = async (req,res) => {
@@ -29,7 +29,9 @@ module.exports.add = async(req,res) => {
 }
 
 module.exports.update = async(req,res) => {
-  // throw new Error('Not implemented')
+  // const {factId} = req.params
+  // const {fact} = req.body
+  //
   res.json("made it to update")
 }
 module.exports.delete = async(req,res)  => {

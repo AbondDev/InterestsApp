@@ -1,5 +1,3 @@
-//Todo: add in api dependencies
-//Todo: implement these controllers
 //Todo: Add error handlers
 const Coin = require('../models/coin.model');
 
@@ -13,7 +11,6 @@ module.exports.fetch = async (req,res) => {
     throw new Error("Coin not found")
   }
 }
-
 
 module.exports.list = async (req,res) => {
   const coins = await Coin.find({}).populate({path: 'facts'})
@@ -29,14 +26,9 @@ module.exports.add = async(req,res) => {
   coin.price = price
   coin.main.url = req.files[0].path
   coin.main.filename = req.files[0].filename+'_main'
-  coin.thumb.url = req.files[0].path.replace('/upload','/upload/w_200')
-  coin.thumb.filename = req.files[0].filename+'_thumb'
   await coin.save()
 }
 
-module.exports.update = async(req,res) => {
-  throw new Error('Not implemented')
-}
 module.exports.delete = async(req,res)  => {
   const {id} = req.params
   await coin.findByIdAndDelete(id)
