@@ -5,12 +5,12 @@ import {Container, Navbar, Nav} from 'react-bootstrap'
 import CreateCoin from "./components/create-coin.component";
 import ShowCoin from "./components/show-coin.component";
 import CoinList from "./components/coins-list.component";
-
+import './App.css';
 class App extends Component {
   render() {
     return (
       <Router>
-        <Container>
+        <Container fluid>
           <Navbar bg="light" expand="md">
             <Navbar.Brand href="/">
               Crypto Coin Interests App
@@ -27,6 +27,7 @@ class App extends Component {
           <Route path="/" exact component={CoinList} />
           <Route path="/coin/:id" component={ShowCoin} />
           <Route path="/create" component={CreateCoin} />
+
         </Container>
       </Router>
     );

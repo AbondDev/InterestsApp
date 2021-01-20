@@ -1,42 +1,20 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import {Col,Card, Button} from 'react-bootstrap';
-// todo: Move this into another class
+import {Col, Row} from 'react-bootstrap';
+import TinderCard from 'react-tinder-card'
+import {Card} from "react-bootstrap";
 // todo: remove thumbnail processing. It is not necessary for cards
-// todo: move styling to css
-const Coin = props => (
-<>
-  <Card>
-    <Card.Header className ="text-center">{props.coin.name}</Card.Header>
-    <Card.Img variant="top" src={props.coin.main.url} alt={props.coin.name} />
-    <Card.Body>
-      <Card.Text>
-        <ul style={{listStyleType:"none"}}>
-          <li><strong>Description:</strong> {props.coin.description}</li>
-          <li><strong>Price: </strong> {props.coin.price}</li>
-        </ul>
-        <h3>Factoids</h3>
-        <ul>
-        {props.coin.facts.map(function(currentFact, i){
-   return (<li key={i}>{currentFact.body} - {currentFact.author}</li>)
- })}
-        </ul>
-        </Card.Text>
-        <Link to={"/coin/"+props.coin._id}>
-          <button type = "button" className = "btn btn-primary">View  Coin</button>
-        </Link>
-
-    </Card.Body>
-  </Card>
-</>
-)
 
 export default class CoinList extends Component {
   constructor(props) {
     super(props);
-    this.state = {coins: []}
+    this.state = {coins: [],
+                lastDirection: ''}
+    this.onswipe = this.onswipe.bind(this)
+    this.outOfFrame = this.outOfFrame.bind(this)
   }
+
   componentDidMount() {
     axios.get('http://localhost:8080/coins/')
       .then(response => {
@@ -46,20 +24,53 @@ export default class CoinList extends Component {
         console.log(error)
       })
   }
-  coinList(){
-    return this.state.coins.map(function(currentCoin, i){
-      return <Coin coin={currentCoin} key={i} />;
+  onswipe(direction,nameToDelete){
+    this.setState({
+      lastDirection: direction
     })
   }
+  outOfFrame(name) {
+    console.log(name)
+  }
+
   render() {
     return (
       <div>
-        <h3>My Favorite Coins</h3>
-
           <Col xs="6">
-              {this.coinList()}
+          <Row className="justify-content-center text-center">
+            <div className='cardContainer'>
+              {this.state.coins.map((coin) =>
+              <TinderCard className='swipe' key={coin.name} onSwipe={(dir) => this.onswipe(dir, coin.name)} onCardLeftScreen={() => this.outOfFrame(coin.name)}>
+                <Card>
+                  <Card.Img variant="top" src={coin.main.url}></Card.Img>
+                  <Card.Body>
+                    <Card.Title>
+                      {coin.name}
+                    </Card.Title>
+                      <Card.Text>
+                        <Row className ="justify-content-center">
+                          <p><strong>Description:</strong> {coin.description}</p>
+                        </Row>
+                        <Row className ="justify-content-center">
+                          <p><strong>Price: </strong> ${coin.price}</p>
+                        </Row>
+                      <h3>Facts</h3>
+                      <Row className ="justify-content-center">
+                      {coin.facts.map(function(currentFact, i){
+                 return (<p key={i}>{currentFact.body} - <span className="text-muted">{currentFact.author}</span></p>)
+               })}
+                      </Row>
+                      </Card.Text>
+                      <Link to={"/coin/"+coin._id}>
+                        <button type = "button" className = "btn btn-block btn-primary">View  Coin</button>
+                      </Link>
+                  </Card.Body>
+                </Card>
+              </TinderCard>
+            )}
+            </div>
+          </Row>
           </Col>
-
       </div>
     )
   }

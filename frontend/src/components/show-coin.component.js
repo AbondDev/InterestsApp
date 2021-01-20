@@ -8,7 +8,7 @@ import CreateFact from "./create-fact.component"
 //todo: make sure the coin for this view makes sense in this context. Ie, the price image, and description should be in the same order as it is on the list view
 const Coin = props => (
   <div>
-  <img src={props.coin.main_image} alt={props.coin.name}/>
+  <img className="img-fluid" src={props.coin.main_image} alt={props.coin.name}/>
   <h4><strong>Price: </strong>{props.coin.price}</h4>
   <p><strong>Description: </strong>{props.coin.description}</p>
   </div>
@@ -53,13 +53,20 @@ export default class ShowCoin extends Component {
         <h3>{this.state.coin.name} Info</h3>
         <Row>
         <Col xs={12} md="6">
-            <Coin coin={this.state.coin}/>
+            <Row>
+              <Coin coin={this.state.coin}/>
+            </Row>
+            <Row>
+              <h3>
+                Facts
+              </h3>
+            </Row>
+            <Row>
+              {this.factList()}
+            </Row>
         </Col>
         <Col xs={12} md="6">
-          <h3>
-            Factoids
-          </h3>
-          {this.factList()}
+
           <CreateFact params={this.props.match.params} history={this.props.history}/>
         </Col>
         </Row>

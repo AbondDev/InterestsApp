@@ -21,7 +21,7 @@ const seedDB = async () => {
   const rawdata = fs.readFileSync(path.join(__dirname, '/coinData.json'));
   const parsedData = JSON.parse(rawdata);
   const coins = parsedData.coins
-  for (let i = 0; i < coins.length - 2; i++) {
+  for (let i = 0; i < coins.length; i++) {
     const price = Math.floor(Math.random() * 20) + 10
     const fact = new Fact({body: "blah blah blah", author: "Mr.Blah"});
     await fact.save();
@@ -36,7 +36,7 @@ const seedDB = async () => {
       },
       main: {
         filename: `code-test/${coins[i].item.symbol}_main`,
-        url: coins[i].item.large
+        url: coins[i].item.main
       }
     })
     coin.facts.push(fact);
