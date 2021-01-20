@@ -56,7 +56,7 @@ export default class CoinList extends Component {
                         </Row>
                       <h3>Facts</h3>
                       <Row className ="justify-content-center">
-                      {coin.facts.map(function(currentFact, i){
+                      {coin.facts.slice(0,2).map(function(currentFact, i){
                  return (<p key={i}>{currentFact.body} - <span className="text-muted">{currentFact.author}</span></p>)
                })}
                       </Row>

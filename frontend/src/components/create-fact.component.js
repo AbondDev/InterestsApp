@@ -60,15 +60,14 @@ render() {
                                onChange={this.onChangeAuthor}
                                />
                    </div>
+
                    <div className="form-group">
                        <label>Body </label>
-                       <textarea
-                           name="body"
-                           rows="4"
-                           cols="25"
-                           className="form-control"
-                           value={this.state.body}
-                           onChange={this.onChangeBody} />
+                       <input  type="text"
+                               className="form-control"
+                               value={this.state.body}
+                               onChange={this.onChangeBody}
+                               />
                    </div>
                    <div className="form-group">
                        <input type="submit" value="Add Fact" className="btn btn-primary" />

@@ -3,6 +3,7 @@
 // Todo: change the file button to react-bootstrap file
 // Todo: make sure all labels are associated to their inputs
 import React, {Component} from 'react';
+import {Form, Row} from 'react-bootstrap'
 import axios from 'axios'
 
 export default class CreateCoin extends Component {
@@ -53,87 +54,90 @@ export default class CreateCoin extends Component {
   onSubmit(e) {
     e.preventDefault()
     // Todo: Remove conosole.logs
-    console.log('Form Submitted');
-    console.log(`Coin Name: ${this.state.name}`);
-    console.log(`CoinGecko Id: ${this.state.coinGeckoId}`);
-    console.log(`Coin Description: ${this.state.description}`);
-    console.log(`Coin Price: ${this.state.price}`);
 
-    const formData = new FormData();
-    formData.append("coinName", this.state.name)
-    formData.append("coineckoId",this.state.coinGeckoId)
-    formData.append("description",this.state.description)
-    formData.append("price",this.state.price)
-    formData.append("image", this.state.image, this.state.image.name)
-    // // todo: move this to .env(?) maybe
-    axios.post(
-      'http://localhost:8080/coins',
-      formData, {
-        headers: {
-          "Content-type": "multipart/form-data",
-        },
-      }
-    ).then(res => console.log(res.data))
-    this.setState({
-      name: '',
-      coinGeckoId: '',
-      description: '',
-      price: 0,
-      image: null
-    })
-    this.props.history.push('/')
+      const formData = new FormData();
+      formData.append("coinName", this.state.name)
+      formData.append("coineckoId",this.state.coinGeckoId)
+      formData.append("description",this.state.description)
+      formData.append("price",this.state.price)
+      formData.append("image", this.state.image, this.state.image.name)
+      // // todo: move this to .env(?) maybe
+      axios.post(
+        'http://localhost:8080/coins',
+        formData, {
+          headers: {
+            "Content-type": "multipart/form-data",
+          },
+        }
+      ).then(res => console.log(res.data))
+      this.setState({
+        name: '',
+        coinGeckoId: '',
+        description: '',
+        price: 0,
+        image: null,
+        validated: true
+      })
+      this.props.history.push('/')
   }
 
 
 render() {
        return (
-           <div className ='mt-2'>
-               <h3>Add New Favorite Coin</h3>
-               <form encType="multipart/form-data" onSubmit={this.onSubmit}>
-                   <div className="form-group">
-                       <label>Name: </label>
-                       <input  type="text"
-                               className="form-control"
-                               value={this.state.name}
-                               onChange={this.onChangeName}
-                               />
-                   </div>
-                   <div className="form-group">
-                       <label>CoinGecko Id </label>
-                       <input
-                               type="text"
-                               className="form-control"
-                               value={this.state.coingeckoId}
-                               onChange={this.onChangeCoingeckoId}
-                               />
-                   </div>
-                   <div className="form-group">
-                       <label>Description </label>
-                       <input
-                               type="text"
-                               className="form-control"
-                               value={this.state.description}
-                               onChange={this.onChangeDescription}
-                               />
-                   </div>
-                   <div className="form-group">
-                       <label>Price </label>
-                       <input
-                               type="number"
-                               className="form-control"
-                               value={this.state.price}
-                               onChange={this.onChangePrice}
-                               />
-                   </div>
-                   <div className="form-group">
-                       <label>Image Upload </label>
-                       <input  type="file" onChange={this.onFileChange} />
-                   </div>
-                   <div className="form-group">
-                       <input type="submit" value="Add Coin" className="btn btn-primary btn-block" />
-                   </div>
-               </form>
-           </div>
+         <Row className="justify-content-center text-left">
+         <div className ='mt-2 col-12 col-md-4'>
+             <h3>Add New Favorite Coin</h3>
+             <Form encType="multipart/form-data" onSubmit={this.onSubmit}>
+                 <Form.Group>
+                     <Form.Label for="coinName">Coin Name: </Form.Label>
+                     <Form.Control type="text"
+                             value={this.state.name}
+                             onChange={this.onChangeName}
+                             placeholder="Bitcoin"
+                             id="coinName"
+                             required/>
+                 </Form.Group>
+                 <Form.Group>
+                     <Form.Label for="coinGeckoId">CoinGecko Id: </Form.Label>
+                     <Form.Control
+                             type="text"
+                             placeholder="bitcoin"
+                             value={this.state.coingeckoId}
+                             id="coinGeckoId"
+                             onChange={this.onChangeCoingeckoId}
+                             />
+                 </Form.Group>
+                 <Form.Group>
+                     <Form.Label for="description">Description: </Form.Label>
+                     <Form.Control
+                             type="text"
+                             value={this.state.description}
+                             onChange={this.onChangeDescription}
+                             id="description"
+                             placeholder="Bitcoin was the first cryptocurrency"
+                             required/>
+                 </Form.Group>
+                 <Form.Group>
+                     <Form.Label for="price">Price: </Form.Label>
+                     <Form.Control
+                             type="number"
+                             value={this.state.price}
+                             onChange={this.onChangePrice}
+                             id="price"
+                             min="1"
+                             required/>
+                 </Form.Group>
+                 <Form.Group>
+                     <Form.Label for="image">Image Upload: </Form.Label>
+                     <input id="image" type="file" className="form-control-file" onChange={this.onFileChange} requires/>
+                 </Form.Group>
+                 <Form.Group>
+                     <input type="submit" value="Add Coin" className="btn btn-primary btn-block" />
+                 </Form.Group>
+             </Form>
+         </div>
+         </Row>
+
        )
    }
 

@@ -10,7 +10,7 @@ export default class Fact extends Component {
       <>
       <div>
       <Row className ="justify-content-center">
-        <p>{this.state.fact.body} - {this.state.fact.author}</p>
+        <p>{this.state.fact.body} - <span className="text-muted"> {this.state.fact.author} </span> </p>
         <button className="btn btn-sm btn-outline-danger" onClick={() =>  this.props.onDelete(this.props.fact._id)}>
           Delete
         </button>
