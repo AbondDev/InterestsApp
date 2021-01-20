@@ -39,20 +39,22 @@ export default class ShowCoin extends Component {
       console.log(error)
     })
   }
-  
+
   render() {
     return (
-      <div>
+      <div className ="container-fluid">
         <h3>{this.state.coin.name} Info</h3>
-        <Row>
+        <Row className="justify-content-between">
         <Col xs={12} md="6">
-            <Row>
+            <Row className="text-center justify-content-center">
               <Coin coin={this.state.coin}/>
             </Row>
             <FactList facts={this.state.coin.facts} coinId={this.props.match.params.id} history={this.props.history}/>
         </Col>
         <Col xs={12} md="6">
+        <Row className="text-left text-md-center justify-content-center justify-content-md-end">
           <CreateFact params={this.props.match.params} history={this.props.history}/>
+          </Row>
         </Col>
         </Row>
       </div>

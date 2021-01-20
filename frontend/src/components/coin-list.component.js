@@ -55,11 +55,14 @@ export default class CoinList extends Component {
                           <p><strong>Price: </strong> ${coin.price}</p>
                         </Row>
                       <h3>Facts</h3>
-                      <Row className ="justify-content-center">
+
                       {coin.facts.slice(0,2).map(function(currentFact, i){
-                 return (<p key={i}>{currentFact.body} - <span className="text-muted">{currentFact.author}</span></p>)
+                 return (
+                   <Row className ="justify-content-center">
+                   <p key={i} className="d-block">{currentFact.body} - <span className="text-muted">{currentFact.author}</span></p>
+                 </Row>)
                })}
-                      </Row>
+
                       </Card.Text>
                       <Link to={"/coin/"+coin._id}>
                         <button type = "button" className = "btn btn-block btn-primary">View  Coin</button>

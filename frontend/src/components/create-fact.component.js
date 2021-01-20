@@ -25,13 +25,8 @@ export default class CreateFact extends Component {
     })
   }
 
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault()
-    // Todo: Remove conosole.logs
-    console.log('Form Submitted');
-    console.log(`Fact body: ${this.state.body}`);
-    console.log(`Fact author: ${this.state.author}`);
-
     const newFact = {
       body: this.state.body,
       author: this.state.author
@@ -49,7 +44,7 @@ export default class CreateFact extends Component {
   }
 render() {
        return (
-           <div className ='mt-2'>
+           <div className ='mt-2 container-fluid'>
                <h3>Add New Fact</h3>
                <form onSubmit={this.onSubmit}>
                    <div className="form-group">
@@ -70,7 +65,7 @@ render() {
                                />
                    </div>
                    <div className="form-group">
-                       <input type="submit" value="Add Fact" className="btn btn-primary" />
+                       <input type="submit" value="Add Fact" className="btn btn-primary btn-block" />
                    </div>
                </form>
            </div>
