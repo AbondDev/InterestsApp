@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Container, Navbar, Nav} from 'react-bootstrap'
 
 import CreateCoin from "./components/create-coin.component";
 import ShowCoin from "./components/show-coin.component";
-import CoinList from "./components/coins-list.component";
+import CoinList from "./components/coin-list.component";
+
 import './App.css';
 class App extends Component {
   render() {

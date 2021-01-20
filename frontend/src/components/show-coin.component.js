@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Col, Row} from "react-bootstrap"
 import axios from "axios";
 import CreateFact from "./create-fact.component"
+import FactList from "./fact-list.component"
 
 // todo: move coins and facts into class
 //Todo: center and format this view
@@ -13,11 +14,6 @@ const Coin = props => (
   <p><strong>Description: </strong>{props.coin.description}</p>
   </div>
 )
-const Fact = props => (
-<div>
-  <p>{props.fact.body} - {props.fact.author}</p>
-</div>
-)
 export default class ShowCoin extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +24,7 @@ export default class ShowCoin extends Component {
     facts: [{body: '', author:''}]}
     }
   }
+
   componentDidMount() {
     axios.get('http://localhost:8080/coins/'+this.props.match.params.id)
     .then(response => {
@@ -42,11 +39,7 @@ export default class ShowCoin extends Component {
       console.log(error)
     })
   }
-  factList() {
-    return this.state.coin.facts.map(function(currentFact, i){
-      return <Fact fact={currentFact} key ={i} />
-    })
-  }
+  
   render() {
     return (
       <div>
@@ -56,17 +49,9 @@ export default class ShowCoin extends Component {
             <Row>
               <Coin coin={this.state.coin}/>
             </Row>
-            <Row>
-              <h3>
-                Facts
-              </h3>
-            </Row>
-            <Row>
-              {this.factList()}
-            </Row>
+            <FactList facts={this.state.coin.facts} coinId={this.props.match.params.id} history={this.props.history}/>
         </Col>
         <Col xs={12} md="6">
-
           <CreateFact params={this.props.match.params} history={this.props.history}/>
         </Col>
         </Row>

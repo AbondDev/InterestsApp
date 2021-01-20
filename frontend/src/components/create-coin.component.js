@@ -1,9 +1,8 @@
 // Todo: add in validations
 // Todo: change className usage to react components where possible
 // Todo: change the file button to react-bootstrap file
-import React, {
-  Component
-} from 'react';
+// Todo: make sure all labels are associated to their inputs
+import React, {Component} from 'react';
 import axios from 'axios'
 
 export default class CreateCoin extends Component {
@@ -128,10 +127,10 @@ render() {
                    </div>
                    <div className="form-group">
                        <label>Image Upload </label>
-                       <input type="file" onChange={this.onFileChange} />
+                       <input  type="file" onChange={this.onFileChange} />
                    </div>
                    <div className="form-group">
-                       <input type="submit" value="Add Coin" className="btn btn-primary" />
+                       <input type="submit" value="Add Coin" className="btn btn-primary btn-block" />
                    </div>
                </form>
            </div>
