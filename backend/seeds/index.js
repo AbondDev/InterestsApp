@@ -23,7 +23,7 @@ const seedDB = async () => {
   const coins = parsedData.coins
   for (let i = 0; i < coins.length; i++) {
     const price = Math.floor(Math.random() * 20) + 10
-    const fact = new Fact({body: "blah blah blah", author: "Mr.Blah"});
+    const fact = new Fact({body: "This is one of my favorite coins", author: "Mr. B"});
     await fact.save();
     const coin = new Coin({
       coinGeckoId: coins[i].item.id,
