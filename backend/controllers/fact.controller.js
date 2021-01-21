@@ -1,13 +1,13 @@
-
 const Fact = require('../models/fact.model');
 const Coin = require('../models/coin.model')
+const ExpressError = require('../utils/ExpressError')
 module.exports.fetch = async (req,res) => {
   const {factId} = req.params;
   const fact = await Fact.findById(factId).exec();
   if(fact) {
     res.json(fact)
   } else {
-    throw new Error("Coin not Found")
+    throw new ExpressError("Fact not Found", 500)
   }
 }
 
@@ -18,7 +18,7 @@ module.exports.list = async (req,res) => {
   if(coin){
     res.json(coin.facts)
   }else {
-    throw new Error("Coin not Found")
+    throw new ExpressError("Coin not Found", 404)
   }
 }
 
@@ -31,7 +31,7 @@ module.exports.add = async(req,res) => {
     await fact.save();
     await coin.save();
   } else {
-    throw new Error("coin not found")
+    throw new ExpressError("Coin not found", 404)
   }
 }
 
@@ -42,7 +42,7 @@ module.exports.update = async(req,res) => {
     const updatedFact = await Fact.findByIdAndUpdate(factId,{...req.body.fact})
     await updatedFact.save()
   } else {
-    throw new Error("fact not found in database")
+    throw new ExpressError("fact not found in database", 404)
   }
 }
 module.exports.delete = async(req,res)  => {
@@ -53,6 +53,6 @@ module.exports.delete = async(req,res)  => {
     await Coin.findByIdAndUpdate(coinId, {$pull: {facts: factId}})
     await Fact.findByIdAndDelete(factId)
   } else {
-    throw new Error("fact or coin not found in database")
+    throw new ExpressError("fact or coin not found in database", 404)
   }
 }

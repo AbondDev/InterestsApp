@@ -23,7 +23,7 @@ export default class CreateFact extends Component {
     })
   }
 
-  async onSubmit(e) {
+   onSubmit(e) {
     e.preventDefault()
     const newFact = {
       body: this.state.body,
@@ -48,26 +48,26 @@ render() {
                <h3>Add New Fact</h3>
                <form onSubmit={this.onSubmit}>
                    <div className="form-group">
-                       <label for="author">author: </label>
+                       <label htmlFor="author">author: </label>
                        <input  type="text"
                                className="form-control"
                                value={this.state.author}
                                onChange={this.onChangeAuthor}
-                               maxlength="100"
+                               maxLength="100"
                                id="author"
                                required
                                />
                    </div>
 
                    <div className="form-group">
-                       <label for="factBody">Body </label>
+                       <label htmlFor="factBody">Body </label>
                        <input  type="text"
                                className="form-control"
                                value={this.state.body}
                                onChange={this.onChangeBody}
                                required
                                id="factBody"
-                               maxlength="100"
+                               maxLength="100"
                                />
                    </div>
                    <div className="form-group">

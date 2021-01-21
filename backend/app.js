@@ -5,8 +5,9 @@ if(process.env.NODE_ENV !== "production") {
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
-const coinRoutes = require('./routes/coin.route.js');
-const factRoutes = require('./routes/fact.route.js');
+const coinRoutes = require('./routes/coin.route');
+const factRoutes = require('./routes/fact.route');
+const ExpressError = require('./utils/ExpressError')
 const server = express();
 
 server.use(cors())
@@ -31,8 +32,16 @@ db.once('open', () => {
 
 server.use('/coins',coinRoutes)
 server.use('/coins/:coinId/facts', factRoutes)
-server.use('*', (req,res) => {
-  res.send(`Invalid url ${req.originalUrl}` )
+
+server.all('*',(req,res, next) => {
+  next(new ExpressError('Page Not Found', 404))
+})
+
+server.use((err,req,res,next) => {
+  const {statusCode = "500"} = err;
+  if(!err.message) err.message = 'Oh No, Something Went Wrong!';
+  console.log(err)
+  res.status(statusCode).json();
 })
 
 server.listen(process.env.PORT, () => {
