@@ -45,23 +45,25 @@ render() {
                <h3>Add New Fact</h3>
                <form onSubmit={this.onSubmit}>
                    <div className="form-group">
-                       <label>author: </label>
+                       <label for="author">author: </label>
                        <input  type="text"
                                className="form-control"
                                value={this.state.author}
                                onChange={this.onChangeAuthor}
                                maxlength="100"
+                               id="author"
                                required
                                />
                    </div>
 
                    <div className="form-group">
-                       <label>Body </label>
+                       <label for="factBody">Body </label>
                        <input  type="text"
                                className="form-control"
                                value={this.state.body}
                                onChange={this.onChangeBody}
                                required
+                               id="factBody"
                                maxlength="100"
                                />
                    </div>

@@ -1,7 +1,3 @@
-// Todo: add in validations
-// Todo: change className usage to react components where possible
-// Todo: change the file button to react-bootstrap file
-// Todo: make sure all labels are associated to their inputs
 import React, {Component} from 'react';
 import {Form, Row} from 'react-bootstrap'
 import axios from 'axios'
@@ -93,7 +89,8 @@ render() {
                              onChange={this.onChangeName}
                              placeholder="Bitcoin"
                              id="coinName"
-                             required/>
+                             required
+                             maxlength="25"/>
                  </Form.Group>
                  <Form.Group>
                      <Form.Label for="coinGeckoId">CoinGecko Id: </Form.Label>
@@ -113,6 +110,7 @@ render() {
                              onChange={this.onChangeDescription}
                              id="description"
                              placeholder="Bitcoin was the first cryptocurrency"
+                             maxlength="100"
                              required/>
                  </Form.Group>
                  <Form.Group>
@@ -123,11 +121,12 @@ render() {
                              onChange={this.onChangePrice}
                              id="price"
                              min="1"
+                             max="100000"
                              required/>
                  </Form.Group>
                  <Form.Group>
                      <Form.Label for="image">Image Upload: </Form.Label>
-                     <input id="image" type="file" className="form-control-file" onChange={this.onFileChange} requires/>
+                     <input id="image" type="file" className="form-control-file" onChange={this.onFileChange} required accept=".png, .jpg, .jpeg"/>
                  </Form.Group>
                  <Form.Group>
                      <input type="submit" value="Add Coin" className="btn btn-primary btn-block" />
