@@ -1,16 +1,20 @@
-// todo: add in joi validation for schema.
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Fact = require('./fact.model')
 
 const CoinSchema = new Schema({
-  coinGeckoId: String,
-  name: String,
-  description: String,
-  price: Number,
+  coinGeckoId: {type: String},
+  name: {type: String,
+        required: true},
+  description: {type: String,
+                required: true},
+  price: {type: Number,
+          required: true},
   main: {
-    filename: String,
-    url: String
+    filename: {type: String,
+              required: true},
+    url: {type: String,
+          required: true}
   },
   facts: [{type: Schema.Types.ObjectId,
           ref: 'Fact'}]
