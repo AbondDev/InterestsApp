@@ -23,7 +23,7 @@ export default class CreateFact extends Component {
     })
   }
 
-  async onSubmit(e) {
+   onSubmit(e) {
     e.preventDefault()
     const newFact = {
       body: this.state.body,
