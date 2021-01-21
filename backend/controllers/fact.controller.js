@@ -1,5 +1,4 @@
 //Todo: Add error handlers
-// Todo: implement update for fact
 const Fact = require('../models/fact.model');
 const Coin = require('../models/coin.model')
 module.exports.fetch = async (req,res) => {
@@ -29,9 +28,14 @@ module.exports.add = async(req,res) => {
 }
 
 module.exports.update = async(req,res) => {
-  // const {factId} = req.params
-  // const {fact} = req.body
-  //
+  const {factId} = req.params
+  const factToUpdate = await Fact.findById(factId).exec()
+  if(factToUpdate) {
+    const updatedFact = await Fact.findByIdAndUpdate(factId,{...req.body.fact})
+    await updatedFact.save()
+  } else {
+    throw new error("fact not found in database")
+  }
   res.json("made it to update")
 }
 module.exports.delete = async(req,res)  => {

@@ -18,6 +18,7 @@ db.once("open", () => {
 
 const seedDB = async () => {
   await Coin.deleteMany({})
+  await Fact.deleteMany({})
   const rawdata = fs.readFileSync(path.join(__dirname, '/coinData.json'));
   const parsedData = JSON.parse(rawdata);
   const coins = parsedData.coins
