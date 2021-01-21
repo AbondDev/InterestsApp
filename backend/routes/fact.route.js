@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 const facts = require('../controllers/fact.controller')
+const catchAsync = require('../utils/catchAsync')
 
 
 router.route('/')
-  .get(facts.list)
-  .post(facts.add)
+  .get(catchAsync(facts.list))
+  .post(catchAsync(facts.add))
 
 router.route('/:factId')
-  .get(facts.fetch)
-  .put(facts.update)
-  .delete(facts.delete)
+  .get(catchAsync(facts.fetch))
+  .put(catchAsync(facts.update))
+  .delete(catchAsync(facts.delete))
 
 module.exports = router;

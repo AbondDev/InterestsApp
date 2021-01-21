@@ -82,17 +82,17 @@ render() {
              <h3>Add New Favorite Coin</h3>
              <Form encType="multipart/form-data" onSubmit={this.onSubmit}>
                  <Form.Group>
-                     <Form.Label for="coinName">Coin Name: </Form.Label>
+                     <Form.Label htmlFor="coinName">Coin Name: </Form.Label>
                      <Form.Control type="text"
                              value={this.state.name}
                              onChange={this.onChangeName}
                              placeholder="Bitcoin"
                              id="coinName"
                              required
-                             maxlength="25"/>
+                             maxLength="25"/>
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label for="coinGeckoId">CoinGecko Id: </Form.Label>
+                     <Form.Label htmlFor="coinGeckoId">CoinGecko Id: </Form.Label>
                      <Form.Control
                              type="text"
                              placeholder="bitcoin"
@@ -102,18 +102,18 @@ render() {
                              />
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label for="description">Description: </Form.Label>
+                     <Form.Label htmlFor="description">Description: </Form.Label>
                      <Form.Control
                              type="text"
                              value={this.state.description}
                              onChange={this.onChangeDescription}
                              id="description"
                              placeholder="Bitcoin was the first cryptocurrency"
-                             maxlength="100"
+                             maxLength="100"
                              required/>
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label for="price">Price: </Form.Label>
+                     <Form.Label htmlFor="price">Price: </Form.Label>
                      <Form.Control
                              type="number"
                              value={this.state.price}
@@ -124,7 +124,7 @@ render() {
                              required/>
                  </Form.Group>
                  <Form.Group>
-                     <Form.Label for="image">Image Upload: </Form.Label>
+                     <Form.Label htmlFor="image">Image Upload: </Form.Label>
                      <input id="image" type="file" className="form-control-file" onChange={this.onFileChange} required accept=".png, .jpg, .jpeg"/>
                  </Form.Group>
                  <Form.Group>
