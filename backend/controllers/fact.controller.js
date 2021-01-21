@@ -15,16 +15,24 @@ module.exports.fetch = async (req,res) => {
 module.exports.list = async (req,res) => {
   const {coinId} = req.params;
   const coin = await Coin.findById(coinId).populate({path: 'facts'})
-  res.json(coin.facts)
+  if(coin){
+    res.json(coin.facts)
+  }else {
+    throw new Error("Coin not Found")
+  }
 }
 
 module.exports.add = async(req,res) => {
   const {coinId} = req.params;
   const coin = await Coin.findById(coinId)
-  const fact = new Fact(req.body)
-  coin.facts.push(fact);
-  await fact.save();
-  await coin.save();
+  if(coin) {
+    const fact = new Fact(req.body)
+    coin.facts.push(fact);
+    await fact.save();
+    await coin.save();
+  } else {
+    throw new Error("coin not found")
+  }
 }
 
 module.exports.update = async(req,res) => {
@@ -34,14 +42,17 @@ module.exports.update = async(req,res) => {
     const updatedFact = await Fact.findByIdAndUpdate(factId,{...req.body.fact})
     await updatedFact.save()
   } else {
-    throw new error("fact not found in database")
+    throw new Error("fact not found in database")
   }
-  res.json("made it to update")
 }
 module.exports.delete = async(req,res)  => {
   const {coinId, factId} = req.params;
-  await Coin.findByIdAndUpdate(coinId, {$pull: {facts: factId}})
-  await Fact.findByIdAndDelete(factId)
-  // todo: this should probably check that the fact id exists in the coin id
-  res.json("deleted")
+  const coinToDelete = await Coin.findById(coinId).exec()
+  const factToDelete = await Fact.findById(factId).exec()
+  if(coinToDelete && factToDelete) {
+    await Coin.findByIdAndUpdate(coinId, {$pull: {facts: factId}})
+    await Fact.findByIdAndDelete(factId)
+  } else {
+    throw new Error("fact or coin not found in database")
+  }
 }
