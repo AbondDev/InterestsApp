@@ -6,9 +6,15 @@ export default class FactList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      facts: [],
+      coinId: ''
+    }
+  }
+  componentDidMount() {
+    this.setState({
       facts: this.props.facts,
       coinId: this.props.coinId
-    }
+    })
   }
   handleDelete = factId => {
     const facts = this.state.facts.filter(fact=>fact._id !== factId)

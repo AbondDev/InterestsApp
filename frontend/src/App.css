@@ -4,7 +4,6 @@
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 
@@ -32,10 +31,12 @@ br + div {
   background-color: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30);
   width: 18rem;
-  
+
 }
 
-
+.btn-outline-danger{
+  max-height: 30px
+}
 .swipe:last-of-type {
 
 }
