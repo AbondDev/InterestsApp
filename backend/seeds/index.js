@@ -1,10 +1,14 @@
+if(process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
 const mongoose = require('mongoose')
 const path = require('path')
 const fs = require('fs')
 const Coin = require('../models/coin.model');
 const Fact = require('../models/fact.model')
 
-mongoose.connect('mongodb://localhost:27017/code-test', {
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/code-test'
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true

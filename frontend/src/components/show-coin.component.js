@@ -24,7 +24,7 @@ export default class ShowCoin extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/coins/'+this.props.match.params.id)
+    axios.get('https://interestsappserver.herokuapp.com/coins/'+this.props.match.params.id)
     .then(response => {
       const coinData = response.data
       this.setState({coin: {name: coinData.name,

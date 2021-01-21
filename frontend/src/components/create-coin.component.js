@@ -56,7 +56,7 @@ export default class CreateCoin extends Component {
       formData.append("price",this.state.price)
       formData.append("image", this.state.image, this.state.image.name)
       axios.post(
-        'http://localhost:8080/coins',
+        'https://interestsappserver.herokuapp.com/coins',
         formData, {
           headers: {
             "Content-type": "multipart/form-data",

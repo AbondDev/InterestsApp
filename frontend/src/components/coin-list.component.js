@@ -15,7 +15,7 @@ export default class CoinList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/coins/')
+    axios.get('https://interestsappserver.herokuapp.com/coins/')
       .then(response => {
         this.setState({coins: response.data});
       })

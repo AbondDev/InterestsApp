@@ -30,7 +30,7 @@ export default class CreateFact extends Component {
       author: this.state.author
     }
     axios.post(
-      'http://localhost:8080/coins/'+this.props.params.id+'/facts',
+      'https://interestsappserver.herokuapp.com/coins/'+this.props.params.id+'/facts',
       newFact,
     ).then(res => console.log(res.data))
     .catch(function(error) {
