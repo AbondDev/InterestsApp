@@ -4,7 +4,7 @@ import axios from "axios";
 import CreateFact from "./create-fact.component"
 import FactList from "./fact-list.component"
 
-// todo: move coins and facts into class
+
 const Coin = props => (
   <div>
   <img className="img-fluid" src={props.coin.main_image} alt={props.coin.name}/>

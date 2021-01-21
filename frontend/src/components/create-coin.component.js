@@ -55,7 +55,6 @@ export default class CreateCoin extends Component {
       formData.append("description",this.state.description)
       formData.append("price",this.state.price)
       formData.append("image", this.state.image, this.state.image.name)
-      // // todo: move this to .env(?) maybe
       axios.post(
         'http://localhost:8080/coins',
         formData, {

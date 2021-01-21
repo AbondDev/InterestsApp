@@ -1,4 +1,4 @@
-//Todo: Add error handlers
+
 const Coin = require('../models/coin.model');
 
 module.exports.fetch = async (req,res) => {
