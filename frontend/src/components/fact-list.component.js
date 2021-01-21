@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Fact from './show-fact.component'
-// Todo: add in validations
-// Todo: make sure all axios calls have a catch
 
 export default class FactList extends Component {
   constructor(props) {

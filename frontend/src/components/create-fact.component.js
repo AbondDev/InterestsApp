@@ -33,6 +33,9 @@ export default class CreateFact extends Component {
       'http://localhost:8080/coins/'+this.props.params.id+'/facts',
       newFact,
     ).then(res => console.log(res.data))
+    .catch(function(error) {
+      console.log(error)
+    })
     this.setState({
       body: '',
       author: ''
