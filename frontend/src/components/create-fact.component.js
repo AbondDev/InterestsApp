@@ -1,5 +1,3 @@
-// Todo: add in validations
-// Todo: change className usage to bootstrap-react components where possible
 import React, {Component } from 'react';
 import axios from 'axios'
 
@@ -52,6 +50,8 @@ render() {
                                className="form-control"
                                value={this.state.author}
                                onChange={this.onChangeAuthor}
+                               maxlength="100"
+                               required
                                />
                    </div>
 
@@ -61,6 +61,8 @@ render() {
                                className="form-control"
                                value={this.state.body}
                                onChange={this.onChangeBody}
+                               required
+                               maxlength="100"
                                />
                    </div>
                    <div className="form-group">
